@@ -15,8 +15,8 @@ app.get("/", (req, res) => {
 });
 
 app.get("/topic", async (req, res) => {
-    const { name } = res.header;
-    const result = await Topic.findOne({ name });
+    const { creator } = req.headers;
+    const result = await Topic.find({ creator });
     res.send({ status: Boolean(result), data: result });
 });
 
